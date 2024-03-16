@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+  <title>Update Category</title>
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <form class="col-md-6" method="post" novalidate="novalidate"
+          th:object="${types}" th:action="@{/types/edit/{id}(id=${types.getId()})}">
+      <h1 class="">Edit Information</h1>
+      <input type="hidden" th:field="*{id}">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}">
+      </div>
+      <div class="form-group mt-2">
+        <button class="btn btn-success" role="button" type="submit">Update</button>
+        <button class="btn btn-warning" role="button" onclick="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+
+<script type="text/javascript">
+  function cancelForm(){
+    window.location = "[[@{/types}]]";
+  }
+</script>
+</body>
+</html>
