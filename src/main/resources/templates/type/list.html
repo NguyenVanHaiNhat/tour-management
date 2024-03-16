@@ -49,7 +49,11 @@
         </tr>
         </tbody>
     </table>
-
+    <a class="btn btn-primary" th:if="${types.hasPrevious()}"
+       th:href="@{'/types?page='+${types.number - 1}}">Previous</a>
+    <span th:text="${types.number + 1}"></span> | <span th:text="${types.totalPages}"></span>
+    <a class="btn btn-primary" th:if="${types.hasNext()}"
+       th:href="@{'/types?page='+${types.number + 1}}">Next</a>
 </div>
 
 <footer th:replace="/layout :: footer"></footer>
