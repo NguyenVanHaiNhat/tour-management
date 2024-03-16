@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+  <title>Add Type</title>
+
+</head>
+<body>
+
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <form class="col-md-6" method="post" th:action="@{/types/create}" th:object="${types}" novalidate="novalidate">
+      <h1 class="" style="color: red;">Add Type</h1>
+      <input type="hidden" th:field="*{id}"/>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}">
+      </div>
+      <div class="form-group mt-2">
+        <button class="btn btn-success" type="submit" value="save">Create</button>
+        <button class="btn btn-secondary" type="button" onclick="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+
+<script type="text/javascript">
+  function cancelForm(){
+    window.location = "[[@{/types}]]";
+  }
+</script>
+</body>
+</html>

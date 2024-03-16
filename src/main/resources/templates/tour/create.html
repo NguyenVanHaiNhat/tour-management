@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+    <title>Add Tour</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <form class="col-md-6" method="post" th:action="@{/tours/create}" th:object="${tours}" novalidate="novalidate">
+            <h1 class="" style="color: red;">Add Tour</h1>
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" class="form-control" id="code" th:field="*{code}">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="destination" th:field="*{destination}">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" th:field="*{price}">
+            </div>
+            <div class="col-md-3 position-relative">
+                <label for="type" class="form-label">Type</label>
+                <select class="form-select" id="type" th:field="*{type.id}" required>
+                    <option selected th:each="t: ${types}" th:value="${t.id}" th:text="${t.name}"></option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <button class="btn btn-success" type="submit" value="save">Add new</button>
+                <button class="btn btn-secondary" type="button" onclick="cancelForm()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+
+<script type="text/javascript">
+    function cancelForm(){
+        window.location = "[[@{/tours}]]";
+    }
+</script>
+</body>
+</html>
