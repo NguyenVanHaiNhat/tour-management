@@ -34,6 +34,11 @@ public class TourService implements ITourService {
     }
 
     @Override
+    public Page<Tour> findByCode(Pageable pageable, String code) {
+        return tourRepository.findByCode(pageable,code);
+    }
+
+    @Override
     public Iterable<Tour> sortAllByPriceOrderByPriceAsc() {
         return tourRepository.sortAllByPriceOrderByPriceAsc();
     }
