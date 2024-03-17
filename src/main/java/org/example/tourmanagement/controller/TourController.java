@@ -66,10 +66,17 @@ public class TourController {
         }
         return "redirect:/error";
     }
-    @GetMapping("/sort")
-    public ModelAndView sort(){
+    @GetMapping("/sortP")
+    public ModelAndView sortByPrice(){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
         Iterable<Tour> tours = iTourService.sortAllByPriceOrderByPriceAsc();
+        modelAndView.addObject("tours", tours);
+        return modelAndView;
+    }
+    @GetMapping("/sortT")
+    public ModelAndView sortByType(){
+        ModelAndView modelAndView = new ModelAndView("/tour/list");
+        Iterable<Tour> tours = iTourService.sortAllByTypeAsc();
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }

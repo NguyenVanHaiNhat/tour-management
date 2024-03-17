@@ -27,9 +27,16 @@
   </div>
   <br>
   <div class="row d-flex mx-3">
-    <form class="d-flex"  th:action="@{/tours/sort}">
+    <div class="col-1">
+    <form class="d-flex"  th:action="@{/tours/sortP}">
       <button type="submit" class="btn btn-warning">Sort By Price</button>
     </form>
+    </div>
+    <div class="col-1">
+    <form class="d-flex"  th:action="@{/tours/sortT}">
+      <button type="submit" class="btn btn-warning">Sort By Type</button>
+    </form>
+    </div>
   </div>
   </div>
 

@@ -13,4 +13,6 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
 
     @Query(nativeQuery = true,value = "SELECT * FROM tours t ORDER BY t.price ASC")
     Iterable<Tour> sortAllByPriceOrderByPriceAsc();
+    @Query(nativeQuery = true,value = "SELECT * FROM tours t ORDER BY t.type_id ASC")
+    Iterable<Tour> sortAllByTypeAsc();
 }

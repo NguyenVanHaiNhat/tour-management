@@ -35,4 +35,9 @@ public class TourService implements ITourService {
     public Iterable<Tour> sortAllByPriceOrderByPriceAsc() {
         return tourRepository.sortAllByPriceOrderByPriceAsc();
     }
+
+    @Override
+    public Iterable<Tour> sortAllByTypeAsc() {
+        return tourRepository.sortAllByTypeAsc();
+    }
 }
