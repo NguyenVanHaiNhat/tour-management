@@ -4,6 +4,8 @@ import org.example.tourmanagement.model.Tour;
 import org.example.tourmanagement.repository.TourRepository;
 import org.example.tourmanagement.service.ITourService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,8 +14,8 @@ public class TourService implements ITourService {
     @Autowired
     private TourRepository tourRepository;
     @Override
-    public Iterable<Tour> findAll() {
-        return tourRepository.findAll();
+    public Page<Tour> findAll(Pageable pageable) {
+        return tourRepository.findAll(pageable);
     }
 
     @Override

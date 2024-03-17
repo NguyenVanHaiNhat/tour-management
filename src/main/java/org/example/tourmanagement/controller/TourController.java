@@ -5,6 +5,9 @@ import org.example.tourmanagement.model.Type;
 import org.example.tourmanagement.service.ITourService;
 import org.example.tourmanagement.service.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,14 +23,14 @@ public class TourController {
     private ITypeService iTypeService;
 
     @ModelAttribute("types")
-    public Iterable<Type> listTypes(){
-        return iTypeService.findAll();
+    public Page<Type> listTypes(@PageableDefault(size = 3) Pageable pageable){
+        return iTypeService.findAll(pageable);
     }
 
     @GetMapping
-    public ModelAndView listTour(){
+    public ModelAndView listTour(@PageableDefault(size = 3)  Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
-        Iterable<Tour> tours = iTourService.findAll();
+        Page<Tour> tours = iTourService.findAll(pageable);
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }
