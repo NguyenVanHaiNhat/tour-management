@@ -14,7 +14,7 @@ public interface TourRepository extends JpaRepository<Tour, Long> {
     Page<Tour> findByCode(Pageable pageable, String code);
 
     @Query(nativeQuery = true,value = "SELECT * FROM tours t ORDER BY t.price ASC")
-    Page<Tour> sortAllByPriceOrderByPriceAsc();
+    Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable);
     @Query(nativeQuery = true,value = "SELECT * FROM tours t ORDER BY t.type_id ASC")
-    Page<Tour> sortAllByTypeAsc();
+    Page<Tour> sortAllByTypeAsc(Pageable pageable);
 }

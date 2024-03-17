@@ -39,12 +39,12 @@ public class TourService implements ITourService {
     }
 
     @Override
-    public Page<Tour> sortAllByPriceOrderByPriceAsc() {
-        return tourRepository.sortAllByPriceOrderByPriceAsc();
+    public Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable) {
+        return tourRepository.sortAllByPriceOrderByPriceAsc(pageable);
     }
 
     @Override
-    public Page<Tour> sortAllByTypeAsc() {
-        return tourRepository.sortAllByTypeAsc();
+    public Page<Tour> sortAllByTypeAsc(Pageable pageable) {
+        return tourRepository.sortAllByTypeAsc(pageable);
     }
 }
