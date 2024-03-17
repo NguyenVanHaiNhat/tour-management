@@ -15,8 +15,18 @@
   </div>
   <br>
   <div class="row d-flex mx-3">
-    <div class="col-9">
+    <div class="col-3">
       <a class="btn btn-warning" role="button" th:href="@{/tours/create}">Add Tour</a>
+    </div>
+    <div class="col-3">
+      <form class="d-flex"  th:action="@{/tours/sortP}">
+        <button type="submit" class="btn btn-warning">Sort By Price</button>
+      </form>
+    </div>
+    <div class="col-3">
+      <form class="d-flex"  th:action="@{/tours/sortT}">
+        <button type="submit" class="btn btn-warning">Sort By Type</button>
+      </form>
     </div>
     <div class="col-3">
       <form class="d-flex" role="search" th:action="@{/tours/search}" method="get">
@@ -26,20 +36,6 @@
     </div>
   </div>
   <br>
-  <div class="row d-flex mx-3">
-    <div class="col-1">
-    <form class="d-flex"  th:action="@{/tours/sortP}">
-      <button type="submit" class="btn btn-warning">Sort By Price</button>
-    </form>
-    </div>
-    <div class="col-1">
-    <form class="d-flex"  th:action="@{/tours/sortT}">
-      <button type="submit" class="btn btn-warning">Sort By Type</button>
-    </form>
-    </div>
-  </div>
-  </div>
-
 
   <table class="table table-striped">
     <thead>
