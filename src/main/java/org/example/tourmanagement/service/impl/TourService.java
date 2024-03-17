@@ -32,4 +32,19 @@ public class TourService implements ITourService {
     public void remove(Long id) {
         tourRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Tour> findByCode(Pageable pageable, String code) {
+        return tourRepository.findByCode(pageable,code);
+    }
+
+    @Override
+    public Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable) {
+        return tourRepository.sortAllByPriceOrderByPriceAsc(pageable);
+    }
+
+    @Override
+    public Page<Tour> sortAllByTypeAsc(Pageable pageable) {
+        return tourRepository.sortAllByTypeAsc(pageable);
+    }
 }

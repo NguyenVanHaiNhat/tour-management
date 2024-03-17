@@ -7,20 +7,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "tours")
-public class Tour {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String code;
-    private String destination;
-    private double price;
-
+    private String username;
+    private String password;
     @ManyToOne
-    @JoinColumn(name = "type_id")
-    private Type type;
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }
