@@ -5,6 +5,9 @@ import org.example.tourmanagement.model.Type;
 import org.example.tourmanagement.service.ITourService;
 import org.example.tourmanagement.service.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -67,16 +70,16 @@ public class TourController {
         return "redirect:/error";
     }
     @GetMapping("/sortP")
-    public ModelAndView sortByPrice(){
+    public ModelAndView sortByPrice(@PageableDefault(size = 3) Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
-        Iterable<Tour> tours = iTourService.sortAllByPriceOrderByPriceAsc();
+        Page<Tour> tours = iTourService.sortAllByPriceOrderByPriceAsc(pageable);
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }
     @GetMapping("/sortT")
-    public ModelAndView sortByType(){
+    public ModelAndView sortByType(@PageableDefault(size = 3)Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
-        Iterable<Tour> tours = iTourService.sortAllByTypeAsc();
+        Page<Tour> tours = iTourService.sortAllByTypeAsc(pageable);
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }

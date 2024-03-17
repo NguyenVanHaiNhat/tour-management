@@ -4,6 +4,8 @@ import org.example.tourmanagement.model.Tour;
 import org.example.tourmanagement.repository.TourRepository;
 import org.example.tourmanagement.service.ITourService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -32,12 +34,12 @@ public class TourService implements ITourService {
     }
 
     @Override
-    public Iterable<Tour> sortAllByPriceOrderByPriceAsc() {
-        return tourRepository.sortAllByPriceOrderByPriceAsc();
+    public Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable) {
+        return tourRepository.sortAllByPriceOrderByPriceAsc(pageable);
     }
 
     @Override
-    public Iterable<Tour> sortAllByTypeAsc() {
-        return tourRepository.sortAllByTypeAsc();
+    public Page<Tour> sortAllByTypeAsc(Pageable pageable) {
+        return tourRepository.sortAllByTypeAsc(pageable);
     }
 }
