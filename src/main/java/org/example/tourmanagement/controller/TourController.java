@@ -34,6 +34,19 @@ public class TourController {
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }
+
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam("search") Optional<String> search, Pageable pageable) {
+        Page<Tour> tours;
+        if (search.isPresent()) {
+            tours = iTourService.findByCode(pageable, search.get());
+        } else {
+            tours = iTourService.findAll(pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/tour/list");
+        modelAndView.addObject("tours", tours);
+        return modelAndView;
+    }
     @GetMapping("/create")
     public ModelAndView showCreateTour(){
         ModelAndView modelAndView = new ModelAndView("/tour/create");
