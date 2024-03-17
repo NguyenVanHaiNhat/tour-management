@@ -26,6 +26,20 @@ public class TypeController {
         return modelAndView;
     }
 
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam("search") Optional<String> search, Pageable pageable) {
+        Page<Type> types;
+        if (search.isPresent()) {
+            types = iTypeService.findByName(pageable, search.get());
+        }
+        else {
+            types = iTypeService.findAll(pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/type/list");
+        modelAndView.addObject("types", types);
+        return modelAndView;
+    }
+
     @GetMapping("/create")
     public ModelAndView showCreate(){
         ModelAndView modelAndView = new ModelAndView("/type/create");

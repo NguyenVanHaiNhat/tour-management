@@ -11,6 +11,8 @@ import java.util.List;
 
 @Repository
 public interface TourRepository extends JpaRepository<Tour, Long> {
+    Page<Tour> findByCode(Pageable pageable, String code);
+
 
     @Query(nativeQuery = true,value = "SELECT * FROM tours t ORDER BY t.price ASC")
     Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable);
