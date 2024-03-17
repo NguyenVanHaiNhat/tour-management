@@ -4,8 +4,8 @@ Tour(id, code, destination, price, type_id), Type(id, name)
 
 Nhật : Phân quyền
 
-Dụng : Sắp xếp, giao diện
+Dụng : Phân trang, giao diện
 
-Pháp : Crud
+Pháp : Tìm kiếm
 
-Đạt : Tìm kiếm, phân trang
+Đạt : Sắp xếp
