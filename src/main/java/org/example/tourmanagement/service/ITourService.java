@@ -8,6 +8,4 @@ public interface ITourService extends GeneralService<Tour> {
     Page<Tour> sortAllByPriceOrderByPriceAsc(Pageable pageable);
     Page<Tour> sortAllByTypeAsc(Pageable pageable);
     Page<Tour> findByCode(Pageable pageable, String code);
-
-
 }
