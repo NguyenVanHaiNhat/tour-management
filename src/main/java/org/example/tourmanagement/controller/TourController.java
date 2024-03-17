@@ -84,14 +84,14 @@ public class TourController {
     @GetMapping("/sortP")
     public ModelAndView sortByPrice(){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
-        Iterable<Tour> tours = iTourService.sortAllByPriceOrderByPriceAsc();
+        Page<Tour> tours = iTourService.sortAllByPriceOrderByPriceAsc();
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }
     @GetMapping("/sortT")
     public ModelAndView sortByType(){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
-        Iterable<Tour> tours = iTourService.sortAllByTypeAsc();
+        Page<Tour> tours = iTourService.sortAllByTypeAsc();
         modelAndView.addObject("tours", tours);
         return modelAndView;
     }

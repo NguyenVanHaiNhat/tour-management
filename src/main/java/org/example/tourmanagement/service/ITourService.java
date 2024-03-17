@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface ITourService extends GeneralService<Tour> {
     Page<Tour> findByCode(Pageable pageable, String code);
-    Iterable<Tour> sortAllByPriceOrderByPriceAsc();
-    Iterable<Tour> sortAllByTypeAsc();
+    Page<Tour> sortAllByPriceOrderByPriceAsc();
+    Page<Tour> sortAllByTypeAsc();
 }
