@@ -32,4 +32,10 @@ public class TypeService implements ITypeService {
     public void remove(Long id) {
         typeRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Type> findByName(Pageable pageable, String name) {
+        return typeRepository.searchName(pageable,name);
+    }
+
 }
