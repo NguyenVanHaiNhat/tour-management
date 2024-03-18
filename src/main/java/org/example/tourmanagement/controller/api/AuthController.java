@@ -1,4 +1,4 @@
-package org.example.tourmanagement.controller;
+package org.example.tourmanagement.controller.api;
 
 import org.example.tourmanagement.config.service.JwtResponse;
 import org.example.tourmanagement.config.service.JwtService;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtService jwtService;
