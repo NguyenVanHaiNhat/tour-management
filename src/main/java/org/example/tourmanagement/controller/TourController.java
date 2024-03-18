@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/tours")
-public class TourController {
+public class  TourController {
     @Autowired
     private ITourService iTourService;
     @Autowired
