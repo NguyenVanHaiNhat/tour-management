@@ -1,5 +1,6 @@
 package org.example.tourmanagement.controller;
 
+
 import org.example.tourmanagement.model.Type;
 import org.example.tourmanagement.service.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
