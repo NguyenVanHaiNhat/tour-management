@@ -20,7 +20,7 @@ public class Tour {
     @JoinColumn(name = "type_id")
     private Type type;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 }

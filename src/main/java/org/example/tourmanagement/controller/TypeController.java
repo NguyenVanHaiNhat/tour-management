@@ -20,7 +20,7 @@ public class TypeController {
     private ITypeService iTypeService;
 
     @GetMapping
-    public ModelAndView listType(@PageableDefault(size = 3) Pageable pageable){
+    public ModelAndView listType(@PageableDefault(size = 9) Pageable pageable){
         Page<Type> types = iTypeService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/type/list");
         modelAndView.addObject("types", types);

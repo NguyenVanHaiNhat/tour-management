@@ -23,12 +23,12 @@ public class TourController {
     private ITypeService iTypeService;
 
     @ModelAttribute("types")
-    public Page<Type> listTypes(@PageableDefault(size = 3) Pageable pageable){
+    public Page<Type> listTypes(@PageableDefault(size = 9) Pageable pageable){
         return iTypeService.findAll(pageable);
     }
 
     @GetMapping
-    public ModelAndView listTour(@PageableDefault(size = 3)  Pageable pageable){
+    public ModelAndView listTour(@PageableDefault(size = 9)  Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("/tour/list");
         Page<Tour> tours = iTourService.findAll(pageable);
         modelAndView.addObject("tours", tours);
