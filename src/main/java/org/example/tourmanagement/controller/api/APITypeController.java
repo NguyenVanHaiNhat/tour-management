@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Controller
 @CrossOrigin("*")
-@RequestMapping("/api/type")
+@RequestMapping("/api/types")
 public class APITypeController {
     @Autowired
     private ITypeService typeService;

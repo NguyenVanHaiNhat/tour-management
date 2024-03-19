@@ -38,11 +38,14 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                                .requestMatchers("/api/auth/login").permitAll()
+                                .requestMatchers("/api/auth/login**").permitAll()
                                 .requestMatchers(HttpMethod.GET,"/api/tours").authenticated()
-//                        .requestMatchers("/api/customers**").hasAnyAuthority("ROLE_ADMIN")
-//                        .requestMatchers(HttpMethod.PUT,"/api/customers**").hasAnyAuthority("ROLE_ADMIN")
-//                        .requestMatchers(HttpMethod.DELETE,"/api/customers**").hasAnyAuthority("ROLE_ADMIN")
+                                .requestMatchers(HttpMethod.GET,"/api/types").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/tours/*").hasAnyAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.PUT,"/api/tours/*/*").hasAnyAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.DELETE,"/api/tours/*").hasAnyAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.POST,"/api/types/*").hasAnyAuthority("ROLE_ADMIN")
+                        .requestMatchers(HttpMethod.PUT,"/api/types/*/*").hasAnyAuthority("ROLE_ADMIN")
                 )
                 .exceptionHandling(customizer -> customizer.accessDeniedHandler(customAccessDeniedHandler()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -60,8 +63,8 @@ public class SecurityConfig {
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userService);
-        authenticationProvider.setPasswordEncoder(passwordEncoder());
-//        authenticationProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+//        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        authenticationProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
         return authenticationProvider;
     }
     @Bean
